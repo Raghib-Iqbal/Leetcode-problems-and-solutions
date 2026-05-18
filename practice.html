@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problem practice</title>
+
+</head>
+ <h1>
+    practice all the solved problem and revise here .....delet all script after revise
+ </h1>
+<body>
+    <script>
+                /////////fibonache series
+
+
+function fibonache(n){
+
+       let x=0,y=1,a=1;
+
+       let result='0 1 ';
+       for(a=1;a<=n-2;a++){
+           let z=x+y;
+           x=y;
+           y=z;
+           result+=' '+z;
+
+        
+       }
+
+ return result;
+
+}
+
+
+console.log(fibonache(3));
+
+let a=[1,2,3,0,0,0],b=[-1,-1,-4 ]
+
+console.log(a,a.slice(3,3))
+console.log(a,a.splice(2,4))
+
+    </script>
+</body>
+
+</html>
