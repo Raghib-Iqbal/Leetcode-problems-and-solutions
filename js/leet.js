@@ -1,0 +1,161 @@
+const numMap = new Map();
+nums = [2, 7, 11, 15], target = 9;
+var twoSum = function (nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        const complement = target - nums[i];
+
+        // Check if the required number exists in our map
+        if (numMap.has(complement)) {
+            return [numMap.get(complement), i];
+        }
+
+        // Otherwise, store current number and its index
+        numMap.set(nums[i], i);
+
+
+    }
+    return []
+}
+console.log(twoSum(nums, target));
+
+// nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+// // let nums = [1,1,2]
+// let set = [...new Set(nums)];
+// let k = set.length;
+// for (let i = 0; i < nums.length; i++) {
+
+//     if (set[i] !== undefined) nums[i] = set[i];
+//     else nums[i] = '_';
+// }
+
+////////////// roman numbers
+
+let s = 'III'
+s = "LVIII";
+s = "MCMXCIV"
+s = "DCXXI"
+
+
+function strip(str) {
+    let total = 0;
+    str = str.split('');
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] == 'I') {
+            if (str[i + 1] == 'V') { total += 4; i = i + 1 }
+            else if (str[i + 1] == "X") { total += 9; i = i + 1 }
+            else total += 1
+        }
+        else if (str[i] == 'V') {
+
+            total += 5
+
+        }
+        else if (str[i] == 'X') {
+            if (str[i + 1] == 'L') { total += 40; i = i + 1 }
+            else if (str[i + 1] == "C") { total += 90; i = i + 1 }
+            else total += 10
+        } else if (str[i] == 'L') { total += 50 }
+        else if (str[i] == 'C') {
+            if (str[i + 1] == 'D') { total += 400; i = i + 1 }
+            else if (str[i + 1] == "M") { total += 900; i = i + 1 }
+            else total += 100
+        }
+        else if (str[i] == 'D') { total += 500 }
+        else if (str[i] == 'M') { total += 1000 }
+    }
+    return total;
+}
+console.log(strip(s));
+
+
+let ss = '()';
+// s = "()[]{}"
+// s = "([)]"
+
+
+function valid(s) {
+    let array = [];
+    for (let i of s) {
+        if (i === '(' || i == '{' || i == '[') {
+            array.push(i);
+        } else {
+            let top = array.pop();
+            if ((i === ')' && top !== '(') || (i === '}' && top !== '{') || (i === ']' && top !== '[')) return false;
+
+        }
+    }
+    return array.length == 0
+}
+// console.log(valid(ss));
+
+
+// let nums = [1,2,4,3], limit = 4
+
+//     let n= nums.length
+//       console.log(n);
+// for(let i in nums){
+//     let check= nums[i]+ nums[n-1-i];
+//     console.log(check);
+// }
+
+
+
+    let strs = ["flower", "flow", "flight"]
+
+    let output = '';
+    var longestCommonPrefix = function(strs) {
+        let output = '';
+
+        // base case
+        if (strs.some(str => str.length === 0)) {
+            return output;
+        }
+        let x = [];
+        let array = [];
+
+        for (let i = 0; i < strs.length; i++) {
+
+            let arr = strs[i].split('');
+            x[i] = arr.shift();
+
+            array.push(arr.join(''));
+
+        }
+
+        if (x.every(val => val === x[0])) {
+            output += x[0];
+           return longestCommonPrefix(array);
+
+        } else {
+            return output
+        }
+
+
+
+ };
+
+    console.log(longestCommonPrefix(strs));
+
+function process(arr) {
+
+// base case
+if (arr.some(str => str.length === 0)) {
+return "";
+}
+
+// take first character from first word
+let firstChar = arr[0][0];
+
+// check if all words start with same char
+if (!arr.every(str => str[0] === firstChar)) {
+return "";
+}
+
+// remove first character from every word
+let remaining = arr.map(str => str.slice(1));
+
+// build answer recursively
+return firstChar + process(remaining);
+}
+
+console.log(process(strs));
