@@ -181,7 +181,39 @@
         };
 
 
-        console.log(climbStairs(3))
+        console.log(climbStairs(3));
+
+
+
+
+
+
+        var generate = function (numRows) {
+            let result = [];
+            for (let i = 0; i < numRows; i++) {
+                let arr = [];
+                for (j = 0; j <= i; j++) {
+                    arr.push(1);
+
+                }
+                if (i > 1) {
+                       for(let k=1;k<i;k++){
+                              arr[k]= result[i-1][k-1]+result[i-1][k];
+
+                       }
+                }
+                result.push(arr);
+            }
+
+            return result;
+        };
+
+
+        console.log(generate(5))
+
+
+
+
     </script>
 </body>
 
