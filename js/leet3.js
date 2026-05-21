@@ -167,4 +167,65 @@ console.log(mostFrequent)
 // console.log(result,map)
 
 
+// /258. Add Digits
 
+num = 381
+
+let arr = num.toString().split('').map(Number)
+function recurs(num) {
+
+    let result = num.toString().split('').map(Number)
+    result = result.reduce((acc, cur) => acc += cur, 0)
+    // console.log(result)
+
+
+    if (result <= 10) return result
+    else return recurs(result)
+
+}
+
+console.log(recurs(num))
+
+
+///168. Excel Sheet Column Title
+const alphabet = [];
+for (let i = 65; i <= 90; i++) {
+    alphabet.push(String.fromCharCode(i));
+}
+
+console.log(alphabet)
+let columnNumber = 701
+var convertToTitle = function (columnNumber) {
+    let result = ''
+    if (columnNumber == 0) return ''
+    columnNumber--;
+    let sum = Math.floor(columnNumber / 26)
+
+    let carry = columnNumber % 26
+
+
+    result += alphabet[carry]
+
+    console.log(carry, sum)
+
+    return result + convertToTitle(sum)
+
+}
+let convert = convertToTitle(columnNumber)
+convert = convert.split('').reverse().join('')
+console.log(convert)
+
+//////////gpt work for 168 problem
+var convertToTitle = function (columnNumber) {
+
+    if (columnNumber === 0) return '';
+
+    columnNumber--;
+
+    let carry = columnNumber % 26;
+    let sum = Math.floor(columnNumber / 26);
+
+    return convertToTitle(sum) + String.fromCharCode(65 + carry);
+};
+
+//////////
